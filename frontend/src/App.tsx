@@ -1,4 +1,6 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pageParts/Layout";
+import TopPage from "./pages/TopPage/TopPage";
 import PostImagePage from "./pages/PostImagePage/PostImagePage";
 
 function App() {
@@ -6,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<></>} />
+          <Route path="/" element={<TopPage />} />
           <Route path="/post-image-page" element={<PostImagePage />} />
         </Routes>
       </Layout>
