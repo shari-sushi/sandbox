@@ -61,6 +61,16 @@ export const Component = () => {
       <div className="relative w-96 aspect-video">
         {/* <div className="relative w-96 aspect-video" ref={movieRef}> */}
         <div className="h-full w-full bg-gray-700"></div>
+        {/* <iframe
+          width="384"
+          height={(384 / 16) * 9}
+          src="https://www.youtube.com/embed/9-sULuZT6Ao?autoplay=1"
+          title="チルカフェで勉強に集中！ポモドーロタイマーで持続する2時間 25分サイクル"
+          // frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoPlay"
+          // referrerpolicy="strict-origin-when-cross-origin"
+          // allowfullscreen
+        /> */}
         <div className="absolute top-0 left-0 h-full w-full">
           {animatedComment.size > 0 && (
             <AnimatePresence>
