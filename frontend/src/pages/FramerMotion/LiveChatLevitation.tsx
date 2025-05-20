@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { WindowSize, WindowSizeControllerRow } from "./WindowSizeControllerRow";
+import { UnknownAvatar } from "../../assets/UnknownAvatar";
 
 export default function LiveChatLevitationPage() {
   return <Component />;
@@ -22,7 +23,7 @@ const message2: ChatMessage = {
 
 const message3: ChatMessage = {
   author: "くま",
-  message: "くまぁ",
+  message: `くまぁ\nどおだったぁ？`,
 };
 
 type ChatMessage = {
@@ -42,35 +43,35 @@ const MAX_COMMENT_COUNT = 5;
 export const Component = () => {
   const [messages, setAnimatedMessages] = useState<AnimatedMessage[]>([]);
   const [videoSize, setVideoSize] = useState<WindowSize>({
-    width: 480,
-    height: 270,
+    width: 480 * 2.5,
+    height: 270 * 2.5,
   });
 
-  const makeComment = (comment: string): AnimatedComment | undefined => {
-    const id = `${Date.now()}_${comment}`;
-    if (animatedComment.has(id)) return;
+  const makeComment = (chat: ChatMessage): AnimatedMessage => {
+    const timeStamp = Date.now();
 
     return {
-      id: id,
-      comment: comment,
-      posX: 0,
-      startedTime: Date.now(),
+      id: `${timeStamp}_${chat.author}`,
+      author: chat.author,
+      message: chat.message,
+      timeStamp: timeStamp,
     };
   };
 
-  const onClickComment = (comment: string) => {
-    const newComment = makeComment(comment);
-    if (!newComment) return;
-    setAnimatedComment((prevMap) => {
-      const newMap = new Map(prevMap);
-      newMap.set(newComment.id, newComment);
-      return newMap;
+  const onClickComment = (chat: ChatMessage) => {
+    setAnimatedMessages((prev) => {
+      const newMessages = [...prev, makeComment(chat)];
+      if (newMessages.length > MAX_COMMENT_COUNT) {
+        return newMessages.slice(-1 * MAX_COMMENT_COUNT);
+      }
+
+      return newMessages;
     });
   };
 
   return (
     <div className="flex flex-col gap-2 p-2">
-      <div>[耐久配信]チャンネル登録者数1万人なるまでおし〇ま！！</div>
+      <div>[耐久配信]チャンネル登録者数1万人なるまでおし○ま!!</div>
       <WindowSizeControllerRow size={videoSize} setSize={setVideoSize} />
 
       <div className="relative aspect-video" style={{ width: videoSize.width, height: videoSize.height }}>
@@ -80,15 +81,62 @@ export const Component = () => {
           src="https://www.youtube.com/embed/UdqAimX-CL8"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoPlay"
         />
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-full flex flex-col justify-end truncate to:opacity">
+          <AnimatePresence initial={false}>
+            {messages.map((msg, i) => {
+              let opacity = 1;
+              switch (messages.length - i) {
+                case 1:
+                  opacity = 1;
+                  break;
+                case 2:
+                  opacity = 0.95;
+                  break;
+                case 3:
+                  opacity = 0.9;
+                  break;
+                case 4:
+                  opacity = 0.7;
+                  break;
+                case 5:
+                  opacity = 0.6;
+                  break;
+              }
 
-          <div className="absolute top-0 left-0 h-full w-full">
-          {/* {animatedComment.size > 0 && (
-            <AnimatePresence>
-              {Array.from(animatedComment.entries()).map(([key, value]) => (
-                <LiveComment key={key} id={value.startedTime} posX={value.posX} comment={value.comment} />
-              ))}
-            </AnimatePresence>
-          )} */}
+              return (
+                <motion.div
+                  key={msg.id}
+                  initial={{ opacity: 0, y: 40 }} // 下から出現
+                  animate={{ opacity: opacity, y: 0 }} // 所定の位置に
+                  exit={{ y: -60, opacity: 0 }} // 上に消えていく
+                  layout
+                  layoutId={`message-${msg.id}`}
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30,
+                    mass: 1,
+                    layout: {
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 30,
+                    },
+                  }}
+                  className="flex items-start mb-2"
+                >
+                  <div className="flex gap-1 items-center bg-none py-1 pr-2 bg-gray-700/80 rounded-md">
+                    {/* index確認用。本番では消す。 */}
+                    {i}
+                    <UnknownAvatar className="fill-gray-300" width={35} height={35} />
+                    <div className="flex flex-col">
+                      <span className="text-sm text-gray-300">{msg.author}</span>
+                      <span className="text-sm text-white">{msg.message}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
       </div>
 
