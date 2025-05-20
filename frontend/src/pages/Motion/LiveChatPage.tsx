@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 export default function LiveChatPage() {
   return <Component />;
@@ -21,13 +22,22 @@ type AnimatedComment = {
 };
 
 export const Component = () => {
-  const [animatedComment, setAnimatedComment] = useState<
-    Map<string, AnimatedComment>
-  >(new Map());
+  const [animatedComment, setAnimatedComment] = useState<Map<string, AnimatedComment>>(new Map());
+  const [videoSize, setVideoSize] = useState<WindowSize>({
+    width: 480,
+    height: 270,
+  });
+
+  // const [animationProperty, setAnimationProperty] = useState<{
+  //   width: number;
+  //   height: number;
+  // }>({
+  //   width: 0,
+  //   height: 0,
+  // });
   // const movieRef = useRef<HTMLDivElement>(undefined);
   // const { getElementProperty } =
   //   useGetElementProperty<HTMLDivElement>(movieRef);
-  // const comment2 = "こんいも";
 
   const makeComment = (comment: string): AnimatedComment | undefined => {
     const id = `${Date.now()}_${comment}`;
@@ -58,7 +68,9 @@ export const Component = () => {
   return (
     <div className="flex flex-col gap-2 p-2">
       <div>耐久配信：チャンネル登録者数1万人耐久</div>
-      <div className="relative w-96 aspect-video">
+      <VideoWindowSizeInputs size={videoSize} setSize={setVideoSize} />
+
+      <div className="relative aspect-video" style={{ width: videoSize.width, height: videoSize.height }}>
         {/* <div className="relative w-96 aspect-video" ref={movieRef}> */}
         <div className="h-full w-full bg-gray-700"></div>
         {/* <iframe
@@ -75,12 +87,7 @@ export const Component = () => {
           {animatedComment.size > 0 && (
             <AnimatePresence>
               {Array.from(animatedComment.entries()).map(([key, value]) => (
-                <LiveComment
-                  key={key}
-                  id={value.startedTime}
-                  posX={value.posX}
-                  comment={value.comment}
-                />
+                <LiveComment key={key} id={value.startedTime} posX={value.posX} comment={value.comment} />
               ))}
             </AnimatePresence>
           )}
@@ -88,16 +95,10 @@ export const Component = () => {
       </div>
 
       <div className="flex gap-1">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"
-          onClick={() => onClickComment(comment1)}
-        >
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(comment1)}>
           コメント１
         </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"
-          onClick={() => onClickComment(comment2)}
-        >
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(comment2)}>
           コメント２
         </button>
       </div>
@@ -133,10 +134,76 @@ const LiveComment = ({ id, comment, posX }: LiveCommentProps) => {
       exit={{ opacity: 0 }}
       transition={{
         duration: ANIMATION_DURATION / 1000,
-        ease: "easeOut",
+        ease: "easeInOut",
       }}
     >
       {comment}
     </motion.div>
+  );
+};
+
+type WindowSize = {
+  width: number;
+  height: number;
+};
+
+type WindowSizeInputsProps = {
+  size: WindowSize;
+  setSize: React.Dispatch<React.SetStateAction<WindowSize>>;
+};
+
+const VideoWindowSizeInputs = ({ size, setSize }: WindowSizeInputsProps) => {
+  const [width] = useWindowSize();
+
+  return (
+    <div className="flex gap-2">
+      <div>windowサイズ：</div>
+      <div>
+        height:
+        <input
+          type={"number"}
+          className="w-20 bg-gray-700 "
+          value={size.height}
+          onChange={(e) => {
+            setSize((a) => {
+              return {
+                width: a.width,
+                height: parseInt(e.target.value),
+              };
+            });
+          }}
+        />
+      </div>
+      <div>
+        width:
+        <input
+          className="w-20 bg-gray-700"
+          value={size.width}
+          onChange={(e) => {
+            setSize((a) => {
+              return { width: parseInt(e.target.value), height: a.height };
+            });
+          }}
+        />{" "}
+      </div>
+      <input
+        type="range"
+        className="w-40 stroke-gray-200"
+        onChange={(e) => {
+          setSize({
+            width: parseInt(e.target.value) * 16,
+            height: parseInt(e.target.value) * 9,
+          });
+        }}
+      />
+      <div
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded hover:cursor-pointer"
+        onClick={() => {
+          setSize({ width: width - 20, height: ((width - 20) * 9) / 16 });
+        }}
+      >
+        画面幅に合わせる
+      </div>
+    </div>
   );
 };
