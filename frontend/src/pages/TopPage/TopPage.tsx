@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { LinkWrapper } from "../../util/LinkWrapper";
 
 export default function TopPage() {
   return <Component />;
@@ -23,18 +23,5 @@ export const Component = () => {
         </LinkWrapper>
       </div>
     </div>
-  );
-};
-
-interface LinkProps {
-  to: string;
-  children: React.ReactNode;
-}
-
-const LinkWrapper = ({ to, children }: LinkProps) => {
-  return (
-    <Link to={to}>
-      <ul className="hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded">{children}</ul>
-    </Link>
   );
 };
