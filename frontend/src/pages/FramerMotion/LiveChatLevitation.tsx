@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useWindowSize } from "../../hooks/useWindowSize";
+import { WindowSize, WindowSizeControllerRow } from "./WindowSizeControllerRow";
 
 export default function LiveChatLevitationPage() {
   return <Component />;
@@ -67,8 +67,8 @@ export const Component = () => {
 
   return (
     <div className="flex flex-col gap-2 p-2">
-      {/* <div>耐久配信：チャンネル登録者数1万人耐久</div> */}
-      <VideoWindowSizeInputs size={videoSize} setSize={setVideoSize} />
+      <div>[耐久配信]チャンネル登録者数1万人なるまでおし〇ま！！</div>
+      <WindowSizeControllerRow size={videoSize} setSize={setVideoSize} />
 
       <div className="relative aspect-video" style={{ width: videoSize.width, height: videoSize.height }}>
         {/* <div className="relative w-96 aspect-video" ref={movieRef}> */}
@@ -101,108 +101,6 @@ export const Component = () => {
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(comment2)}>
           コメント２
         </button>
-      </div>
-    </div>
-  );
-};
-
-interface LiveCommentProps {
-  id: number;
-  posX: number;
-  comment: string;
-}
-
-const LiveComment = ({ id, comment, posX }: LiveCommentProps) => {
-  // const randomNumber = (
-  //   min: number = 0,
-  //   max: number = Number.MAX_SAFE_INTEGER
-  // ): number => {
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // };
-
-  return (
-    <motion.div
-      key={id}
-      className={`absolute text-2xl`}
-      initial={{
-        bottom: 0,
-        // right: `${randomNumber(-15, 15)}%`,
-        right: posX,
-        opacity: 1,
-      }}
-      animate={{ bottom: "70%", opacity: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        duration: ANIMATION_DURATION / 1000,
-        ease: "easeInOut",
-      }}
-    >
-      {comment}
-    </motion.div>
-  );
-};
-
-type WindowSize = {
-  width: number;
-  height: number;
-};
-
-type WindowSizeInputsProps = {
-  size: WindowSize;
-  setSize: React.Dispatch<React.SetStateAction<WindowSize>>;
-};
-
-const VideoWindowSizeInputs = ({ size, setSize }: WindowSizeInputsProps) => {
-  const [width] = useWindowSize();
-
-  return (
-    <div className="flex gap-2">
-      <div>windowサイズ：</div>
-      <div>
-        height:
-        <input
-          type={"number"}
-          className="w-20 bg-gray-700 "
-          value={size.height}
-          onChange={(e) => {
-            setSize((a) => {
-              return {
-                width: a.width,
-                height: parseInt(e.target.value),
-              };
-            });
-          }}
-        />
-      </div>
-      <div>
-        width:
-        <input
-          className="w-20 bg-gray-700"
-          value={size.width}
-          onChange={(e) => {
-            setSize((a) => {
-              return { width: parseInt(e.target.value), height: a.height };
-            });
-          }}
-        />{" "}
-      </div>
-      <input
-        type="range"
-        className="w-40 stroke-gray-200"
-        onChange={(e) => {
-          setSize({
-            width: parseInt(e.target.value) * 16,
-            height: parseInt(e.target.value) * 9,
-          });
-        }}
-      />
-      <div
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded hover:cursor-pointer"
-        onClick={() => {
-          setSize({ width: width - 20, height: ((width - 20) * 9) / 16 });
-        }}
-      >
-        画面幅に合わせる
       </div>
     </div>
   );
