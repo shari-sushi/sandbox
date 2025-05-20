@@ -10,42 +10,45 @@ export interface Props {
   id?: string;
 }
 
-const ANIMATION_DURATION: number = 1500; // ms
-const comment1 = "こんすし";
-const comment2 = "こんいも";
-
-type AnimatedComment = {
-  id: string;
-  comment: string;
-  posX: number;
-  startedTime: number;
+const message1: ChatMessage = {
+  author: "すし",
+  message: "こんすし🍣",
 };
 
+const message2: ChatMessage = {
+  author: "いも",
+  message: "こんいも～🍃",
+};
+
+const message3: ChatMessage = {
+  author: "くま",
+  message: "くまぁ",
+};
+
+type ChatMessage = {
+  author: string;
+  message: string;
+};
+
+type AnimatedMessage = {
+  id: string;
+  author: string;
+  message: string;
+  timeStamp: number;
+};
+
+const MAX_COMMENT_COUNT = 5;
+
 export const Component = () => {
-  const [animatedComment, setAnimatedComment] = useState<Map<string, AnimatedComment>>(new Map());
+  const [messages, setAnimatedMessages] = useState<AnimatedMessage[]>([]);
   const [videoSize, setVideoSize] = useState<WindowSize>({
     width: 480,
     height: 270,
   });
 
-  // const [animationProperty, setAnimationProperty] = useState<{
-  //   width: number;
-  //   height: number;
-  // }>({
-  //   width: 0,
-  //   height: 0,
-  // });
-  // const movieRef = useRef<HTMLDivElement>(undefined);
-  // const { getElementProperty } =
-  //   useGetElementProperty<HTMLDivElement>(movieRef);
-
   const makeComment = (comment: string): AnimatedComment | undefined => {
     const id = `${Date.now()}_${comment}`;
     if (animatedComment.has(id)) return;
-
-    // lastPosX.current += randomNumber(-15, 15); // 0~100%
-    // if (lastPosX.current < 0) lastPosX.current = randomNumber(0, 15);
-    // else if (lastPosX.current > 30) lastPosX.current = randomNumber(15, 30);
 
     return {
       id: id,
@@ -71,19 +74,14 @@ export const Component = () => {
       <WindowSizeControllerRow size={videoSize} setSize={setVideoSize} />
 
       <div className="relative aspect-video" style={{ width: videoSize.width, height: videoSize.height }}>
-        {/* <div className="relative w-96 aspect-video" ref={movieRef}> */}
         <div className="h-full w-full bg-gray-700"></div>
-        {/* <iframe
-          width="384"
-          height={(384 / 16) * 9}
-          src="https://www.youtube.com/embed/9-sULuZT6Ao?autoplay=1"
-          title="チルカフェで勉強に集中！ポモドーロタイマーで持続する2時間 25分サイクル"
-          // frameborder="0"
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/UdqAimX-CL8"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoPlay"
-          // referrerpolicy="strict-origin-when-cross-origin"
-          // allowfullscreen
-        /> */}
-        <div className="absolute top-0 left-0 h-full w-full">
+        />
+
+          <div className="absolute top-0 left-0 h-full w-full">
           {/* {animatedComment.size > 0 && (
             <AnimatePresence>
               {Array.from(animatedComment.entries()).map(([key, value]) => (
@@ -95,11 +93,18 @@ export const Component = () => {
       </div>
 
       <div className="flex gap-1">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(comment1)}>
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => setAnimatedMessages([])}>
+          クリア
+        </button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(message1)}>
           コメント１
         </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(comment2)}>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(message2)}>
           コメント２
+        </button>
+
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(message3)}>
+          コメント３
         </button>
       </div>
     </div>
