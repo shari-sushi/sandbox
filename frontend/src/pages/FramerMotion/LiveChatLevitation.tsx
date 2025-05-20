@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WindowSize, WindowSizeControllerRow } from "./WindowSizeControllerRow";
 import { UnknownAvatar } from "../../assets/UnknownAvatar";
 
@@ -39,6 +39,7 @@ type AnimatedMessage = {
 };
 
 const MAX_COMMENT_COUNT = 5;
+const COMMENT_LIMIT_TIME = 1000 * 60; // 1分
 
 export const Component = () => {
   const [messages, setAnimatedMessages] = useState<AnimatedMessage[]>([]);
@@ -68,6 +69,21 @@ export const Component = () => {
       return newMessages;
     });
   };
+
+  // NOTE: 10秒ごとにチェックし、1分以上経過したメッセージを削除している
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimatedMessages((prev) => {
+        return prev.filter((msg) => {
+          console.log("elapsed", Date.now() - msg.timeStamp);
+
+          return Date.now() - msg.timeStamp < COMMENT_LIMIT_TIME;
+        });
+      });
+    }, 1000 * 10);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col gap-2 p-2">
@@ -99,7 +115,7 @@ export const Component = () => {
                   opacity = 0.7;
                   break;
                 case 5:
-                  opacity = 0.6;
+                  opacity = 0.5;
                   break;
               }
 
@@ -130,7 +146,10 @@ export const Component = () => {
                     <UnknownAvatar className="fill-gray-300" width={35} height={35} />
                     <div className="flex flex-col">
                       <span className="text-sm text-gray-300">{msg.author}</span>
-                      <span className="text-sm text-white">{msg.message}</span>
+                      <span className="text-sm text-white">
+                        {msg.message}
+                        {msg.timeStamp}
+                      </span>
                     </div>
                   </div>
                 </motion.div>
