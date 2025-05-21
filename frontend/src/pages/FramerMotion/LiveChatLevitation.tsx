@@ -31,7 +31,7 @@ type ChatMessage = {
   message: string;
 };
 
-type AnimatedMessage = {
+type LiveChat = {
   id: string;
   author: string;
   message: string;
@@ -42,13 +42,13 @@ const MAX_COMMENT_COUNT = 5;
 const COMMENT_LIMIT_TIME = 1000 * 60; // 1分
 
 export const Component = () => {
-  const [messages, setAnimatedMessages] = useState<AnimatedMessage[]>([]);
+  const [liveChats, setLiveChats] = useState<LiveChat[]>([]);
   const [videoSize, setVideoSize] = useState<WindowSize>({
     width: 480 * 2.5,
     height: 270 * 2.5,
   });
 
-  const makeComment = (chat: ChatMessage): AnimatedMessage => {
+  const newLiveChat = (chat: ChatMessage): LiveChat => {
     const timeStamp = Date.now();
 
     return {
@@ -59,9 +59,9 @@ export const Component = () => {
     };
   };
 
-  const onClickComment = (chat: ChatMessage) => {
-    setAnimatedMessages((prev) => {
-      const newMessages = [...prev, makeComment(chat)];
+  const onClickCreateChat = (chat: ChatMessage) => {
+    setLiveChats((prev) => {
+      const newMessages = [...prev, newLiveChat(chat)];
       if (newMessages.length > MAX_COMMENT_COUNT) {
         return newMessages.slice(-1 * MAX_COMMENT_COUNT);
       }
@@ -73,7 +73,7 @@ export const Component = () => {
   // NOTE: 10秒ごとにチェックし、1分以上経過したメッセージを削除している
   useEffect(() => {
     const interval = setInterval(() => {
-      setAnimatedMessages((prev) => {
+      setLiveChats((prev) => {
         return prev.filter((msg) => {
           console.log("elapsed", Date.now() - msg.timeStamp);
 
@@ -97,11 +97,11 @@ export const Component = () => {
           src="https://www.youtube.com/embed/UdqAimX-CL8"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoPlay"
         />
-        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-full flex flex-col justify-end truncate to:opacity">
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-full flex flex-col justify-end truncate">
           <AnimatePresence initial={false}>
-            {messages.map((msg, i) => {
+            {liveChats.map((msg, i) => {
               let opacity = 1;
-              switch (messages.length - i) {
+              switch (liveChats.length - i) {
                 case 1:
                   opacity = 1;
                   break;
@@ -160,17 +160,17 @@ export const Component = () => {
       </div>
 
       <div className="flex gap-1">
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => setAnimatedMessages([])}>
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => setLiveChats([])}>
           クリア
         </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(message1)}>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickCreateChat(message1)}>
           コメント１
         </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(message2)}>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickCreateChat(message2)}>
           コメント２
         </button>
 
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickComment(message3)}>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer" onClick={() => onClickCreateChat(message3)}>
           コメント３
         </button>
       </div>
