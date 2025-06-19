@@ -1,11 +1,19 @@
 export const TailwindOpacity = () => {
   // https://zenn.dev/portalkeyinc/articles/b0fe3e3c195ed1 の動作チェック
+
+  // v3.4でbg-opacity-\*は非推奨になりbg-[color]/\*が実装&推奨になった
+  // https://v3.tailwindcss.com/docs/upgrade-guide#automatic-transforms-and-filters
+
+  // さらに、v4ではbg-opacity-\*は削除されてる。
+  // (実際、このsandboxは v4.0.17なので認識されなかった)
+  // https://tailwindcss.com/docs/upgrade-guide#removed-tailwind-directives
+
   return (
-    <div>
+    <div className="relative">
       <div className="relative w-64 h-64">
         <img src="https://storage.googleapis.com/zenn-user-upload/avatar/36cbd3e131.jpeg" />
         <div className="absolute p-2 inset-0">
-          <div className="w-full h-full p-1 flex flex-col gap-2 justify-center items-center bg-gray-200 opacity-50 rounded">
+          <div className="w-full h-full p-1 flex flex-col gap-2 justify-center items-center bg-gray-200/50 rounded">
             <div className="text-white text-lg font-bold text-center whitespace-pre-line cursor-default">{"PortalKey\nあぁPortalKey\nPortalKey"}</div>
             <div className="px-4 py-1 text-white text-lg font-bold bg-lightgreen-500 hover:brightness-110 rounded-full cursor-pointer">Click here!</div>
           </div>
@@ -25,7 +33,7 @@ export const TailwindOpacity = () => {
       <div className="relative w-64 h-64">
         <img src="https://storage.googleapis.com/zenn-user-upload/avatar/36cbd3e131.jpeg" />
         <div className="absolute p-2 inset-0">
-          <div className="w-full h-full p-1 flex flex-col gap-2 justify-center items-center bg-gray-200 bg-opacity-50 rounded">
+          <div className="w-full h-full p-1 flex flex-col gap-2 justify-center items-center bg-gray-200/50 rounded">
             <div className="text-white text-lg font-bold text-center whitespace-pre-line cursor-default">{"PortalKey\nあぁPortalKey\nPortalKey"}</div>
             <div className="px-4 py-1 text-white text-lg font-bold bg-lightgreen-500 hover:brightness-110 rounded-full cursor-pointer">Click here!</div>
           </div>
