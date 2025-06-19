@@ -21,6 +21,9 @@ export const Component = () => {
         <LinkWrapper to="/animate-presence/live-chat">
           <ul>Framer Motion : live-chat</ul>
         </LinkWrapper>
+        <LinkWrapper to="/tailwind-opacity">
+          <ul>Tailwind Opacity</ul>
+        </LinkWrapper>
       </div>
     </div>
   );
