@@ -5,6 +5,7 @@ import PostImagePage from "./pages/PostImagePage/PostImagePage";
 import LiveChatLevitationPage from "./pages/FramerMotion/LiveChatLevitation";
 import LiveChatPage from "./pages/FramerMotion/LiveChat";
 import { TailwindOpacity } from "./pages/TailwindOpacity";
+import OtherPage from "./pages/OtherPage/OtherPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/animate-presence/live-chat" element={<LiveChatPage />} />
           <Route path="/animate-presence/live-chat-levitation" element={<LiveChatLevitationPage />} />
           <Route path="/tailwind-opacity" element={<TailwindOpacity />} />
+          <Route path="/other" element={<OtherPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

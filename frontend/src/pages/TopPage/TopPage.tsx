@@ -24,6 +24,9 @@ export const Component = () => {
         <LinkWrapper to="/tailwind-opacity">
           <ul>Tailwind Opacity</ul>
         </LinkWrapper>
+        <LinkWrapper to="/other">
+          <ul>Other Page</ul>
+        </LinkWrapper>
       </div>
     </div>
   );
