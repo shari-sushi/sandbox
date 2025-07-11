@@ -40,12 +40,26 @@ export const Component = () => {
               )}
             </AnimatePresence>
 
-            {/* ３＋７ */}
             <div className="flex z-10">
-              {/* ３ */}
-              <div className={`flex bg-blue-700 h-8 w-16`}>
-                <BackIcon />
-                <BackIcon />
+              <div>
+                {/* ３ */}
+                <div className={`flex bg-blue-700 h-8 w-16`}>
+                  <BackIcon />
+                  <BackIcon />
+                </div>
+
+                {/* ７ */}
+                {/* 高さが3段目⇔2段目になるように調整 */}
+                <motion.div
+                  className="absolute z-20 right-0 hover:bg-blue-600 bg-blue-700 hover:bg-opacity-20 rounded-full p-1 cursor-pointer"
+                  layout
+                  style={{ bottom: isDisplay ? movingHeight : 0 }}
+                  transition={{
+                    mass: 1,
+                  }}
+                >
+                  <NoteCircleIcon />
+                </motion.div>
               </div>
 
               {/* ６ */}
@@ -59,19 +73,6 @@ export const Component = () => {
                   </MotionDiv>
                 )}
               </AnimatePresence>
-
-              {/* ７ */}
-              {/* 高さが3段目⇔2段目になるように調整 */}
-              <motion.div
-                className="absolute z-20 right-0 hover:bg-blue-600 bg-blue-700 hover:bg-opacity-20 rounded-full p-1 cursor-pointer"
-                layout
-                style={{ bottom: isDisplay ? movingHeight : 0 }}
-                transition={{
-                  mass: 1,
-                }}
-              >
-                <NoteCircleIcon />
-              </motion.div>
             </div>
           </div>
 
