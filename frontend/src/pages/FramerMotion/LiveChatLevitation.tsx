@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { WindowSize, WindowSizeControllerRow } from "./WindowSizeControllerRow";
+import { WindowSize, WindowSizeControllerRow } from "./internal/WindowSizeControllerRow";
 import { UnknownAvatar } from "../../assets/UnknownAvatar";
 
 export default function LiveChatLevitationPage() {
