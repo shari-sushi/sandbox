@@ -18,6 +18,9 @@ export const Component = () => {
             <LinkWrapper to="/animate-presence/behavior-animate-presence">
               <ul> behavior-animate-presence</ul>
             </LinkWrapper>
+            <LinkWrapper to="/animate-presence/behavior-motion-div">
+              <ul> behavior-motion-div</ul>
+            </LinkWrapper>
             <LinkWrapper to="/animate-presence/live-chat-levitation">
               <ul>live-chat-levitation</ul>
             </LinkWrapper>
