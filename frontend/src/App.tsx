@@ -7,6 +7,7 @@ import LiveChatPage from "./pages/FramerMotion/LiveChat";
 import { TailwindOpacity } from "./pages/TailwindOpacity";
 import OtherPage from "./pages/OtherPage/OtherPage";
 import ControllerPage from "./pages/FramerMotion/Controller";
+import BehaviorAnimatePresencePage from "./pages/FramerMotion/BehaviorAnimatePresence";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/post-image-page" element={<PostImagePage />} />
           <Route path="/animate-presence">
             <Route index element={<div>path確認して!</div>} />
+            <Route path="behavior-animate-presence" element={<BehaviorAnimatePresencePage />} />
             <Route path="live-chat" element={<LiveChatPage />} />
             <Route path="live-chat-levitation" element={<LiveChatLevitationPage />} />
             <Route path="controller" element={<ControllerPage />} />
