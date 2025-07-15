@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 export default function OtherPage() {
   return <Component />;
@@ -9,6 +9,23 @@ export interface Props {
 }
 
 export const Component = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <BG>
+        <LengthComponent />
+      </BG>
+      <BG>
+        <BoolOrUndefinedComponent />
+      </BG>
+    </div>
+  );
+};
+
+const BG = ({ children }: { children: ReactElement }) => {
+  return <div className="bg-zinc-600 w-fit h-full p-2">{children}</div>;
+};
+
+const LengthComponent = () => {
   const [itemList, setItemList] = useState<(null | undefined | string)[]>([]);
 
   const pushNull = () => {
@@ -55,6 +72,31 @@ export const Component = () => {
           リセット
         </div>
       </div>
+    </>
+  );
+};
+
+const BoolOrUndefinedComponent = () => {
+  const [value, setValue] = useState<boolean | undefined>(undefined);
+
+  const message1 = value === undefined ? "undefined" : value ? "true" : "false";
+  const message2 = value ? "true" : "false";
+
+  return (
+    <>
+      <div className="flex gap-2">
+        <div className="p-1 rounded-md bg-amber-700 cursor-pointer hover:bg-amber-600 active:bg-amber-900" onClick={() => setValue(true)}>
+          true
+        </div>
+        <div className="p-1 rounded-md bg-amber-700 cursor-pointer hover:bg-amber-600 active:bg-amber-900" onClick={() => setValue(false)}>
+          false
+        </div>
+        <div className="p-1 rounded-md bg-amber-700 cursor-pointer hover:bg-amber-600 active:bg-amber-900" onClick={() => setValue(undefined)}>
+          undefined
+        </div>
+      </div>
+      <div>{message1}</div>
+      <div>{message2}</div>
     </>
   );
 };
