@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { WindowSize, WindowSizeControllerRow } from "./WindowSizeControllerRow";
+import { WindowSize, WindowSizeControllerRow } from "./internal/WindowSizeControllerRow";
 
 export default function LiveChatPage() {
   return <Component />;
@@ -10,7 +10,7 @@ export interface Props {
   id?: string;
 }
 
-const ANIMATION_DURATION: number = 1500; // ms
+const ANIMATION_DURATION_SEC: number = 1.5;
 const comment1 = "こんすし";
 const comment2 = "こんいも";
 
@@ -105,7 +105,7 @@ const LiveComment = ({ id, comment, posX }: LiveCommentProps) => {
       animate={{ bottom: "70%", opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
-        duration: ANIMATION_DURATION / 1000,
+        duration: ANIMATION_DURATION_SEC / 1000,
         ease: "easeInOut",
       }}
     >
