@@ -17,3 +17,10 @@
 
 こっちのsandboxと合流したいなぁ
 https://github.com/shari-sushi/0015Laboratory/blob/main/README.md
+
+---
+
+### ローカルで動かす
+npm管理なのでpackage.jsonのあるディレクトリで`npm install`し、`npm run dev`で動かせるはず。
+実際に起動させてるviteなのでviteのデフォportを開いてね。
+`http://localhost:5173/`
