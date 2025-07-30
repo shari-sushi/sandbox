@@ -26,6 +26,7 @@ function App() {
             <Route path="controller" element={<ControllerPage />} />
           </Route>
           <Route path="/tailwind-opacity" element={<TailwindOpacity />} />
+          <Route path="/other" element={<OtherPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
