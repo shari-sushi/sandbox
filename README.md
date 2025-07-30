@@ -1,7 +1,7 @@
 ### 遊び場
-- backend: Golang
+- [backend: Golang](https://github.com/shari-sushi/sanbox/tree/main/backend/cmd)
   - init関数の挙動確認
-- frontend: TS, React, Tailwind
+- [frontend: TS, React, Tailwind](https://github.com/shari-sushi/sanbox/tree/main/frontend/src/pages)
   - TopPage: 目次的な 
   - FramerMotion
     - motion.divにて、基本的な挙動確認や同じlayoutIdが同時に2つ存在する場合の挙動確認
