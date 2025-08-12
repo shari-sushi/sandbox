@@ -1,0 +1,15 @@
+
+PCの電源問題考えてなかった
+
+- 2つ終わった時点で残バッテリー11分と言われてしまった
+discord, notion, ゲーム用ツールの自動起動
+wifi, BTの起動
+パフォーマンスモードが中だった
+WSL切れば良かった(VScodeで.txtファイルにメモを取っていたが、WSL落として、一旦windowsに保存で良かった)
+タブレットにキーボード付けてる人多い　写真の取り込みが早そう 
+
+
+// ここは記事に載せない
+スタートアップ
+PK, discord ２つ, overwolf, マウスのELECOM, Launch Opera
+UPDATE: discord, github, 
