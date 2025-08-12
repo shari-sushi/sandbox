@@ -1,4 +1,10 @@
 ### 遊び場
+
+フロント側だけはvercelで公開したり、気分でやめたりしてます。<br/>
+https://sanbox-sigma.vercel.app/
+
+
+### やったこと
 - [backend: Golang](https://github.com/shari-sushi/sanbox/tree/main/backend/cmd)
   - init関数の挙動確認
 - [frontend: TS, React, Tailwind](https://github.com/shari-sushi/sanbox/tree/main/frontend/src/pages)
