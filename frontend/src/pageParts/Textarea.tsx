@@ -8,12 +8,7 @@ interface TextareaProps {
   disabled?: boolean;
 }
 
-export function Textarea({
-  text,
-  onChangedProperty,
-  maxLength,
-  disabled,
-}: TextareaProps) {
+export function Textarea({ text, onChangedProperty, maxLength, disabled }: TextareaProps) {
   const [currentText, setCurrentText] = useState<string>(text);
   // const isCompositionStart = useRef<boolean>(false);
 
@@ -24,6 +19,9 @@ export function Textarea({
   // const handleCompositionEnd = () => {
   //   isCompositionStart.current = false;
   // };
+
+  // 未完成のため応急のコンパイルエラー処置
+  console.log(onChangedProperty);
 
   const onChanged = (text: string) => {
     setCurrentText(text);
