@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Textarea from "../../components/Textarea";
 import { getStringByCharCount } from "../../util/getStringByCharCount";
+import Textarea from "../../pageParts/Textarea";
 
 interface TextareaState {
   text: string;
@@ -47,17 +47,11 @@ function SingleComponent() {
   return (
     <>
       <div className="flex gap-1 py-2">
-        <button
-          className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer"
-          onClick={getData}
-        >
+        <button className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer" onClick={getData}>
           データ取得
         </button>
         {/* 後で消す */}
-        <button
-          className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer"
-          onClick={() => setData({ text: "データ取得中", disabled: true })}
-        >
+        <button className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer" onClick={() => setData({ text: "データ取得中", disabled: true })}>
           リセット
         </button>
       </div>
@@ -69,9 +63,7 @@ function SingleComponent() {
           maxLength={maxLength}
           onChange={(e) => onChanged(e.target.value)}
         />
-        <div
-          className={`flex justify-end ${data.disabled ? "opacity-50" : ""}`}
-        >
+        <div className={`flex justify-end ${data.disabled ? "opacity-50" : ""}`}>
           {`${
             data.disabled
               ? "データ取得中"
@@ -80,10 +72,7 @@ function SingleComponent() {
           }`}
         </div>
       </div>
-      <button
-        className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer"
-        onClick={submit}
-      >
+      <button className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer" onClick={submit}>
         送信
       </button>
     </>
@@ -112,31 +101,16 @@ function DividedComponents() {
   return (
     <>
       <div className="flex gap-1 py-2">
-        <button
-          className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer"
-          onClick={getData}
-        >
+        <button className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer" onClick={getData}>
           データ取得
         </button>
         {/* 後で消す */}
-        <button
-          className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer"
-          onClick={() => setData({ text: "データ取得中", disabled: true })}
-        >
+        <button className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer" onClick={() => setData({ text: "データ取得中", disabled: true })}>
           リセット
         </button>
       </div>
-      <Textarea
-        text={data.text}
-        disabled={data.disabled}
-        maxLength={maxLength}
-        onChangedProperty={onChangedText}
-      />
-      <button
-        className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer"
-        onClick={submit}
-        disabled={data.disabled}
-      >
+      <Textarea text={data.text} disabled={data.disabled} maxLength={maxLength} onChangedProperty={onChangedText} />
+      <button className="bg-blue-500 text-white p-2 rounded-md mr-2 hover:bg-blue-600 cursor-pointer" onClick={submit} disabled={data.disabled}>
         送信
       </button>
     </>
