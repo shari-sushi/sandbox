@@ -9,6 +9,7 @@ import OtherPage from "./pages/OtherPage/OtherPage";
 import ControllerPage from "./pages/FramerMotion/Controller";
 import BehaviorAnimatePresencePage from "./pages/FramerMotion/BehaviorAnimatePresence";
 import BehaviorMotionDivPage from "./pages/FramerMotion/Behavior-motionDiv";
+import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="controller" element={<ControllerPage />} />
           </Route>
           <Route path="/tailwind-opacity" element={<TailwindOpacity />} />
+          <Route path="/tailwind-grid-gap" element={<TailwindGridGap />} />
           <Route path="/other" element={<OtherPage />} />
         </Routes>
       </Layout>
