@@ -6,7 +6,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="h-lvh w-lvw bg-zinc-800 text-white select-none">
+    <div className="min-h-lvh w-lvw bg-zinc-800 text-white select-none">
       {/* header */}
       <div className="h-8 bg-zinc-900">
         <Link to="/" className="inline-block w-fit mx-2 bg-red-200 hover:brightness-70 rounded-2xl">
@@ -14,7 +14,7 @@ export function Layout({ children }: LayoutProps) {
         </Link>
       </div>
       {/* body */}
-      <div className="px-2 pt-1">{children}</div>
+      <div className="px-2 py-1">{children}</div>
     </div>
   );
 }
