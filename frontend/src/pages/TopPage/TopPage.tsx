@@ -1,7 +1,7 @@
-import { LinkWrapper } from "../../util/LinkWrapper";
+import { LinkWrapper } from "../../util/LinkWrapper"
 
 export default function TopPage() {
-  return <Component />;
+  return <Component />
 }
 
 export const Component = () => {
@@ -43,5 +43,5 @@ export const Component = () => {
         </LinkWrapper>
       </div>
     </div>
-  );
-};
+  )
+}

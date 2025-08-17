@@ -1,15 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pageParts/Layout";
-import TopPage from "./pages/TopPage/TopPage";
-import PostImagePage from "./pages/PostImagePage/PostImagePage";
-import LiveChatLevitationPage from "./pages/FramerMotion/LiveChatLevitation";
-import LiveChatPage from "./pages/FramerMotion/LiveChat";
-import { TailwindOpacity } from "./pages/TailwindOpacity";
-import OtherPage from "./pages/OtherPage/OtherPage";
-import ControllerPage from "./pages/FramerMotion/Controller";
-import BehaviorAnimatePresencePage from "./pages/FramerMotion/BehaviorAnimatePresence";
-import BehaviorMotionDivPage from "./pages/FramerMotion/Behavior-motionDiv";
-import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Layout from "./pageParts/Layout"
+import TopPage from "./pages/TopPage/TopPage"
+import PostImagePage from "./pages/PostImagePage/PostImagePage"
+import LiveChatLevitationPage from "./pages/FramerMotion/LiveChatLevitation"
+import LiveChatPage from "./pages/FramerMotion/LiveChat"
+import { TailwindOpacity } from "./pages/TailwindOpacity"
+import OtherPage from "./pages/OtherPage/OtherPage"
+import ControllerPage from "./pages/FramerMotion/Controller"
+import BehaviorAnimatePresencePage from "./pages/FramerMotion/BehaviorAnimatePresence"
+import BehaviorMotionDivPage from "./pages/FramerMotion/Behavior-motionDiv"
+import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap"
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
         </Routes>
       </Layout>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
