@@ -38,6 +38,9 @@ export const Component = () => {
         <LinkWrapper to="/tailwind-grid-gap">
           <ul>Tailwind Grid Gap</ul>
         </LinkWrapper>
+        <LinkWrapper to="/element-position">
+          <ul>Element Position</ul>
+        </LinkWrapper>
         <LinkWrapper to="/other">
           <ul>Other Page</ul>
         </LinkWrapper>

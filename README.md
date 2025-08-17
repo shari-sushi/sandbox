@@ -14,6 +14,8 @@
     - Gridでgapが効かなくなるときの原因と対処
   - TextareaPage
     - なんだっけ… 
+  - ElementPositionPage
+    - absolute要素の位置を自在に動かす方法。useRefとgetBoundingClientRectを使う
   - OtherPage
     - TSのnullable typeの挙動確認等 
 
