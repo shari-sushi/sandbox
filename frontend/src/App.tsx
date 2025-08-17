@@ -10,6 +10,7 @@ import ControllerPage from "./pages/FramerMotion/Controller"
 import BehaviorAnimatePresencePage from "./pages/FramerMotion/BehaviorAnimatePresence"
 import BehaviorMotionDivPage from "./pages/FramerMotion/Behavior-motionDiv"
 import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap"
+import ElementPosition from "./pages/ElementPosition/ElementPosition"
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route path="/tailwind-opacity" element={<TailwindOpacity />} />
           <Route path="/tailwind-grid-gap" element={<TailwindGridGap />} />
+          <Route path="/element-position" element={<ElementPosition />} />
           <Route path="/other" element={<OtherPage />} />
         </Routes>
       </Layout>
