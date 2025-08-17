@@ -57,7 +57,7 @@ export const Component = ({ id }: Props) => {
   )
 }
 
-// hooksはこっち frontend/src/hooks/useElementProperty.ts
+// hooks版はこっち→ frontend/src/hooks/useElementProperty.ts
 const getElementProperty = <T extends HTMLElement>(elementRef: RefObject<T>) => {
   const getElementProperty = (targetProperty: DOMRectProperty): number => {
     const clientRect = elementRef.current?.getBoundingClientRect()
