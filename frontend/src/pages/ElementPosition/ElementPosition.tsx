@@ -15,12 +15,14 @@ export const Component = ({ id }: Props) => {
   const targetRef2 = useRef(null!)
   const targetRef3 = useRef(null!)
 
-  const [position, setPosition] = useState({
-    top: 0,
-    left: 0,
-    height: 0,
-    width: 0,
-  })
+  const initialPosition = {
+    top: 200,
+    left: 200,
+    height: 100,
+    width: 100,
+  }
+
+  const [position, setPosition] = useState(initialPosition)
 
   const moveComponent = (ref: React.RefObject<HTMLElement>) => {
     return setPosition(getElementPosition(ref))
@@ -29,18 +31,27 @@ export const Component = ({ id }: Props) => {
   console.log(id)
 
   return (
-    <div className="w-[500px] h-[400px] bg-gray-700">
-      <div ref={targetRef1} className="ml-72 w-40 h-10 bg-green-900 cursor-pointer" onClick={() => moveComponent(targetRef1)}>
-        <div>ここに移動</div>
-      </div>
-      <div ref={targetRef2} className="m-2 w-40 aspect-video bg-green-900 cursor-pointer" onClick={() => moveComponent(targetRef2)}>
-        <div>ここに移動</div>
-      </div>
-      <div ref={targetRef3} className="m-20 w-40 aspect-square bg-green-900 cursor-pointer" onClick={() => moveComponent(targetRef3)}>
-        <div>ここに移動</div>
+    <div className="flex flex-col gap-y-1">
+      <div className="w-[500px] h-[400px] bg-gray-700">
+        <div ref={targetRef1} className="ml-72 w-40 h-10 bg-green-900 cursor-pointer" onClick={() => moveComponent(targetRef1)}>
+          <div>ここに移動</div>
+        </div>
+        <div ref={targetRef2} className="m-2 w-40 aspect-video bg-green-900 cursor-pointer" onClick={() => moveComponent(targetRef2)}>
+          <div>ここに移動</div>
+        </div>
+        <div ref={targetRef3} className="ml-20 mt-20 w-40 aspect-square bg-green-900 cursor-pointer" onClick={() => moveComponent(targetRef3)}>
+          <div>ここに移動</div>
+        </div>
       </div>
       <div className="absolute flex justify-center items-center bg-green-600 opacity-50" style={position}>
         <p>表示したい要素</p>
+      </div>
+      <div
+        className="bg-blue-500 cursor-pointer w-20 rounded-md p-1 hover:bg-blue-600 flex justify-center"
+        onClick={() => {
+          setPosition(initialPosition)
+        }}>
+        リセット
       </div>
     </div>
   )
