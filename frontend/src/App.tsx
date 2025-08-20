@@ -2,15 +2,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./pageParts/Layout"
 import TopPage from "./pages/TopPage/TopPage"
 import PostImagePage from "./pages/PostImagePage/PostImagePage"
-import LiveChatLevitationPage from "./pages/FramerMotion/LiveChatLevitation"
-import LiveChatPage from "./pages/FramerMotion/LiveChat"
+import LiveChatLevitationPage from "./pages/FramerMotionPages/LiveChatLevitation"
+import LiveChatPage from "./pages/FramerMotionPages/LiveChat"
 import { TailwindOpacity } from "./pages/TailwindOpacity"
 import OtherPage from "./pages/OtherPage/OtherPage"
-import ControllerPage from "./pages/FramerMotion/Controller"
-import BehaviorAnimatePresencePage from "./pages/FramerMotion/BehaviorAnimatePresence"
-import BehaviorMotionDivPage from "./pages/FramerMotion/Behavior-motionDiv"
+import ControllerPage from "./pages/FramerMotionPages/Controller"
+import BehaviorAnimatePresencePage from "./pages/FramerMotionPages/BehaviorAnimatePresence"
+import BehaviorMotionDivPage from "./pages/FramerMotionPages/Behavior-motionDivPage"
 import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap"
 import ElementPosition from "./pages/ElementPosition/ElementPosition"
+import ReactPlayerPage from "./pages/ReactPlayer/ReactPlayerPage"
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<TopPage />} />
-          <Route path="/post-image-page" element={<PostImagePage />} />
-          <Route path="/animate-presence">
+          <Route path="post-image-page" element={<PostImagePage />} />
+          <Route path="animate-presence">
             <Route index element={<div>path確認して!</div>} />
             <Route path="behavior-animate-presence" element={<BehaviorAnimatePresencePage />} />
             <Route path="behavior-motion-div" element={<BehaviorMotionDivPage />} />
@@ -27,10 +28,13 @@ function App() {
             <Route path="live-chat-levitation" element={<LiveChatLevitationPage />} />
             <Route path="controller" element={<ControllerPage />} />
           </Route>
-          <Route path="/tailwind-opacity" element={<TailwindOpacity />} />
-          <Route path="/tailwind-grid-gap" element={<TailwindGridGap />} />
-          <Route path="/element-position" element={<ElementPosition />} />
-          <Route path="/other" element={<OtherPage />} />
+          <Route path="tailwind">
+            <Route path="opacity" element={<TailwindOpacity />} />
+            <Route path="grid-gap" element={<TailwindGridGap />} />
+          </Route>
+          <Route path="react-player" element={<ReactPlayerPage />} />
+          <Route path="element-position" element={<ElementPosition />} />
+          <Route path="other" element={<OtherPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

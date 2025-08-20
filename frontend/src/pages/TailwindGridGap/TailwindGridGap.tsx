@@ -1,9 +1,9 @@
 export default function TailwindGridGap() {
-  return <Component />;
+  return <Component />
 }
 
 export interface Props {
-  id?: string;
+  id?: string
 }
 
 export const Component = ({ id }: Props) => {
@@ -26,7 +26,7 @@ export const Component = ({ id }: Props) => {
                   <div key={i} className="h-8 w-8 bg-green-600">
                     {i + 1}
                   </div>
-                );
+                )
               })}
             </div>
           </div>
@@ -39,7 +39,7 @@ export const Component = ({ id }: Props) => {
                 <div key={i} className="h-8 w-8 bg-green-600">
                   {i + 1}
                 </div>
-              );
+              )
             })}
           </div>
         </div>
@@ -51,24 +51,24 @@ export const Component = ({ id }: Props) => {
                 <div key={i} className="h-8 w-8 bg-green-600">
                   {i + 1}
                 </div>
-              );
+              )
             })}
           </div>
         </div>
 
         <div className="w-96 bg-gray-500">
           <div>h-fit w-fit gap-2で良い感じになる</div>
-          <div className="h-fit w-fit bg-amber-50 grid grid-cols-3 gap-4">
+          <div className="h-fit  w-fit bg-amber-50 grid grid-cols-3 gap-4">
             {Array.from({ length: 9 }, (_, i) => {
               return (
                 <div key={i} className="h-12 w-12 bg-green-600">
                   {i + 1}
                 </div>
-              );
+              )
             })}
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
