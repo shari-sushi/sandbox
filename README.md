@@ -22,6 +22,8 @@ https://sanbox-sigma.vercel.app/
     - なんだっけ… 
   - ElementPositionPage
     - absolute要素の位置を自在に動かす方法。useRefとgetBoundingClientRectを使う
+  - excess property
+    - TSとReact.UseStateの余剰プロパティが切り捨てられるかを確認した  
   - OtherPage
     - TSのnullable typeの挙動確認等 
 
