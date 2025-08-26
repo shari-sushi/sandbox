@@ -12,6 +12,7 @@ import BehaviorMotionDivPage from "./pages/FramerMotionPages/Behavior-motionDivP
 import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap"
 import ElementPosition from "./pages/ElementPosition/ElementPosition"
 import ReactPlayerPage from "./pages/ReactPlayer/ReactPlayerPage"
+import { ExcessPropertyPage } from "./pages/TypeScript/ExcessPropertyPage"
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           <Route path="tailwind">
             <Route path="opacity" element={<TailwindOpacity />} />
             <Route path="grid-gap" element={<TailwindGridGap />} />
+          </Route>
+          <Route path="typescript">
+            <Route path="excess-property" element={<ExcessPropertyPage />} />
           </Route>
           <Route path="react-player" element={<ReactPlayerPage />} />
           <Route path="element-position" element={<ElementPosition />} />
