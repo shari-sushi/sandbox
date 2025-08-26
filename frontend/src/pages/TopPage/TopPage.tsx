@@ -1,20 +1,18 @@
-import { LinkWrapper } from "../../util/LinkWrapper";
+import { LinkWrapper } from "../../util/LinkWrapper"
 
 export default function TopPage() {
-  return <Component />;
+  return <Component />
 }
 
 export const Component = () => {
   return (
     <div className="h-full text-gray-200">
-      <h1 className="text-2xl">Top Page</h1>
-      <div className="flex flex-col gap-3 ml-3">
-        <LinkWrapper to="/post-image-page">
-          <ul>Post Image Page</ul>
-        </LinkWrapper>
+      <h1 className="text-2xl mb-2">Top Page</h1>
+      <div className="flex flex-col gap-3">
+        {/* 1 */}
         <div>
-          <div className="text-zinc-400">Framer Motion :</div>
-          <div className="flex flex-col gap-1 ml-3">
+          <div className="text-zinc-50 bg-gray-500 w-96 px-1">Framer Motion :</div>
+          <div className="flex flex-col gap-1 ml-4">
             <LinkWrapper to="/animate-presence/behavior-animate-presence">
               <ul> behavior-animate-presence</ul>
             </LinkWrapper>
@@ -32,16 +30,37 @@ export const Component = () => {
             </LinkWrapper>
           </div>
         </div>
-        <LinkWrapper to="/tailwind-opacity">
-          <ul>Tailwind Opacity</ul>
-        </LinkWrapper>
-        <LinkWrapper to="/tailwind-grid-gap">
-          <ul>Tailwind Grid Gap</ul>
-        </LinkWrapper>
-        <LinkWrapper to="/other">
-          <ul>Other Page</ul>
-        </LinkWrapper>
+        {/* 2 */}
+        <div>
+          <div className="text-white bg-gray-500 w-96 px-1">TailWind CSS:</div>
+          <div className="flex flex-col gap-1 ml-4">
+            <LinkWrapper to="/tailwind-opacity">
+              <ul>Tailwind Opacity</ul>
+            </LinkWrapper>
+            <LinkWrapper to="/tailwind-grid-gap">
+              <ul>Tailwind Grid Gap</ul>
+            </LinkWrapper>
+            <LinkWrapper to="/element-position">
+              <ul>Element Position</ul>
+            </LinkWrapper>
+          </div>
+        </div>
+        <div>
+          {/* 3 */}
+          <div className="text-white bg-gray-500 w-96 px-1">The Other:</div>
+          <div className="flex flex-col gap-1 ml-4">
+            <LinkWrapper to="/react-player">
+              <ul>React Player</ul>
+            </LinkWrapper>
+            <LinkWrapper to="/post-image-page">
+              <ul>Post Image Page</ul>
+            </LinkWrapper>
+            <LinkWrapper to="/other">
+              <ul>Other Page</ul>
+            </LinkWrapper>
+          </div>
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}

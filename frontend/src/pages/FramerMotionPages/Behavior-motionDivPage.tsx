@@ -1,21 +1,21 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import { Icon4 } from "../../Icons/4-icons";
-import { Icon5 } from "../../Icons/5-icons";
-import { Icon6 } from "../../Icons/6-icons";
+import { AnimatePresence, motion } from "framer-motion"
+import { useState } from "react"
+import { Icon4 } from "../../Icons/4-icons"
+import { Icon5 } from "../../Icons/5-icons"
+import { Icon6 } from "../../Icons/6-icons"
 
 export default function BehaviorMotionDivPage() {
-  return <Component />;
+  return <Component />
 }
 
 export interface Props {
-  id?: string;
+  id?: string
 }
 
 export const Component = () => {
-  const [isDisplay, setIsDisplay] = useState<boolean>(true);
+  const [isDisplay, setIsDisplay] = useState<boolean>(true)
 
-  const test1 = "test1";
+  const test1 = "test1"
 
   return (
     <div className="flex flex-col gap-4 ">
@@ -63,5 +63,5 @@ export const Component = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
