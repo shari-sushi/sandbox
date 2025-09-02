@@ -106,10 +106,10 @@ const ExcessPropertyUseStatePage = () => {
 
   return (
     <div className="ml-4 flex flex-col gap-y-2">
-      <h1 className="text-2xl">useStateでは余剰プロパティは削除される</h1>
+      <h1 className="text-2xl">useStateで余剰プロパティを見て見よう</h1>
       <div className="flex flex-col gap-6 ml-4">
-        <Buttons activity={activity} setActivity={setActivity} />
-        <div>
+        <Buttons setActivity={setActivity} />
+        <div className="h-24">
           〇useStateが保持している値
           <div className="ml-4">
             {Object.keys(activity).map((key) => (
@@ -125,7 +125,7 @@ const ExcessPropertyUseStatePage = () => {
   )
 }
 
-const Buttons = ({ activity, setActivity }: { activity: Activity; setActivity: (activity: Activity) => void }) => {
+const Buttons = ({ setActivity }: { setActivity: (activity: Activity) => void }) => {
   const [selected, setSelected] = useState<number>(1)
 
   return (
@@ -133,7 +133,7 @@ const Buttons = ({ activity, setActivity }: { activity: Activity; setActivity: (
       <div
         className={`flex flex-col gap-y-2 rounded p-2 cursor-pointer group ${selected === 1 ? "border-2 border-blue-400" : "m-0.5"}`}
         onClick={() => {
-          setActivity(activity)
+          setActivity(supertypeActivity)
           setSelected(1)
           console.log("元の値をセット")
         }}>
