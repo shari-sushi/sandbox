@@ -106,7 +106,7 @@ const ExcessPropertyUseStatePage = () => {
 
   return (
     <div className="ml-4 flex flex-col gap-y-2">
-      <h1 className="text-2xl">useStateで余剰プロパティを見て見よう</h1>
+      <h1 className="text-2xl">useStateで余剰プロパティを見てみよう</h1>
       <div className="flex flex-col gap-6 ml-4">
         <Buttons setActivity={setActivity} />
         <div className="h-24">
