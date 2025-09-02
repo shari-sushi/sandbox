@@ -102,7 +102,7 @@ const subtypeActivity2: Activity = {
 }
 
 const ExcessPropertyUseStatePage = () => {
-  const [activity, setActivity] = useState<Activity>(subtypeActivity1)
+  const [activity, setActivity] = useState<Activity>(supertypeActivity)
 
   return (
     <div className="ml-4 flex flex-col gap-y-2">
