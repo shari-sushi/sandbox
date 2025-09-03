@@ -203,11 +203,11 @@ const Result = ({ activity }: { activity: Activity }) => {
     <div className="mt-4">
       <span className="underline">セットした値とuseStateで保持している値の等価比較</span>
       <div className="ml-4">
-        <div className="">
-          deepEqualの比較結果: <span className="text-blue-400">{JSON.stringify(isDeepEqual)}</span>
+        <div>
+          deepEqualの比較結果: <span className={`${isDeepEqual ? "text-blue-400" : "text-red-400"}`}>{JSON.stringify(isDeepEqual)}</span>
         </div>
         <div>
-          上位型のプロパティのみの比較結果: <span className={`${isDeepEqual ? "text-blue-400" : "text-red-400"}`}>{JSON.stringify(isSame)}</span>
+          上位型のプロパティのみの比較結果: <span className={`${isSame ? "text-blue-400" : "text-red-400"}`}>{JSON.stringify(isSame)}</span>
         </div>
       </div>
     </div>
