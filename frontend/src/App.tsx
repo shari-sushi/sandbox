@@ -13,6 +13,7 @@ import TailwindGridGap from "./pages/TailwindGridGap/TailwindGridGap"
 import ElementPosition from "./pages/ElementPosition/ElementPosition"
 import ReactPlayerPage from "./pages/ReactPlayer/ReactPlayerPage"
 import { ExcessPropertyPage } from "./pages/TypeScript/ExcessPropertyPage"
+import ReactTooltipPage from "./pages/ReactTooltip/ReactTooltip"
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           </Route>
           <Route path="react-player" element={<ReactPlayerPage />} />
           <Route path="element-position" element={<ElementPosition />} />
+          <Route path="react-tooltip" element={<ReactTooltipPage />} />
           <Route path="other" element={<OtherPage />} />
         </Routes>
       </Layout>
