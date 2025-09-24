@@ -64,6 +64,9 @@ export const Component = () => {
             <LinkWrapper to="/post-image-page">
               <ul>Post Image Page</ul>
             </LinkWrapper>
+            <LinkWrapper to="/react-tooltip">
+              <ul>React Tooltip</ul>
+            </LinkWrapper>
             <LinkWrapper to="/other">
               <ul>Other Page</ul>
             </LinkWrapper>
