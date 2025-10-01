@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sandbox/cmd/inittest/testA"
+	"sandbox/inittest/testA"
 )
 
 func main() {

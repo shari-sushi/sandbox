@@ -1,7 +1,7 @@
 package testA
 
 import (
-	"sandbox/cmd/inittest/initial"
+	"sandbox/inittest/initial"
 )
 
 func Test1() int {

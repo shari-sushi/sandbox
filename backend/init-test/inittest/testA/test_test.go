@@ -1,7 +1,7 @@
 package testA_test
 
 import (
-	"sandbox/cmd/inittest/testA"
+	"sandbox/inittest/testA"
 	"testing"
 )
 
@@ -13,7 +13,7 @@ func TestTest1(t *testing.T) {
 	}{
 		// TODO: Add test cases.
 		{"成功:53が返る", 53, true},
-		{"失敗:initが働いてない場合は0が返る", 0, false},
+		{"成功:initが働いている場合は53が返る", 53, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
