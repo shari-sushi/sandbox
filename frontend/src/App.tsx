@@ -14,6 +14,7 @@ import ElementPosition from "./pages/ElementPosition/ElementPosition"
 import ReactPlayerPage from "./pages/ReactPlayer/ReactPlayerPage"
 import { ExcessPropertyPage } from "./pages/TypeScript/ExcessPropertyPage"
 import ReactTooltipPage from "./pages/ReactTooltip/ReactTooltip"
+import ReactRenderPage from "./pages/ReactRender/ReactRender"
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="typescript">
             <Route path="excess-property" element={<ExcessPropertyPage />} />
+          </Route>
+          <Route path="react">
+            <Route path="render" element={<ReactRenderPage />} />
           </Route>
           <Route path="react-player" element={<ReactPlayerPage />} />
           <Route path="element-position" element={<ElementPosition />} />

@@ -55,6 +55,15 @@ export const Component = () => {
           </div>
         </div>
         <div>
+          {/* 4 */}
+          <div className="text-white bg-gray-500 w-96 px-1">React</div>
+          <div className="flex flex-col gap-1 ml-4">
+            <LinkWrapper to="/react/render">
+              <ul>ReactRender</ul>
+            </LinkWrapper>
+          </div>
+        </div>
+        <div>
           {/* last */}
           <div className="text-white bg-gray-500 w-96 px-1">The Other:</div>
           <div className="flex flex-col gap-1 ml-4">
