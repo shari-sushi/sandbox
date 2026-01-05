@@ -1,15 +1,17 @@
+/* eslint-disable no-empty-pattern */
+
 export default function Page() {
-  return <Component />;
+  return <Component />
 }
 
 export interface Props {
-  id?: string;
+  id?: string
 }
 
-export const Component = ({ id }: Props) => {
+export const Component = ({}: Props) => {
   return (
     <>
-      <>{id}</>
+      <>template</>
     </>
-  );
-};
+  )
+}
