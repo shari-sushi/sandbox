@@ -61,6 +61,9 @@ export const Component = () => {
             <LinkWrapper to="/react/render">
               <ul>ReactRender</ul>
             </LinkWrapper>
+            <LinkWrapper to="/react/react-hook-form">
+              <ul>React Hook Form</ul>
+            </LinkWrapper>
           </div>
         </div>
         <div>

@@ -15,6 +15,7 @@ import ReactPlayerPage from "./pages/ReactPlayer/ReactPlayerPage"
 import { ExcessPropertyPage } from "./pages/TypeScript/ExcessPropertyPage"
 import ReactTooltipPage from "./pages/ReactTooltip/ReactTooltip"
 import ReactRenderPage from "./pages/ReactRender/ReactRender"
+import ReactHookFromPage from "./pages/ReactHookFrom/ReactHookFrom"
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           </Route>
           <Route path="react">
             <Route path="render" element={<ReactRenderPage />} />
+            <Route path="react-hook-form" element={<ReactHookFromPage />} />
           </Route>
           <Route path="react-player" element={<ReactPlayerPage />} />
           <Route path="element-position" element={<ElementPosition />} />
