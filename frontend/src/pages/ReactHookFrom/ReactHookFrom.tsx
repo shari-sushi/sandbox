@@ -17,9 +17,13 @@ export const Component = ({}: Props) => {
     members: [],
   })
 
+  const altTranslated = (data: FormValues) => {
+    setSubmittedData(data)
+  }
+
   return (
     <>
-      <TeamForm onSubmitted={setSubmittedData} />
+      <TeamForm onSubmitted={altTranslated} />
       <SubmittedData submittedData={submittedData} />
       <div className="bg-zinc-700 my-3 mt-20">
         <div>react-hook-formを使わなかった人の話</div>
@@ -149,10 +153,33 @@ type SubmittedDataProps = {
   submittedData: FormValues
 }
 
+// テーブルの書き方はこれ
+// https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/tr
 const SubmittedData = ({ submittedData }: SubmittedDataProps) => {
   return (
-    <>
+    <div>
+      <span>送信されたデータ(という体で送信する代わりに表示)</span>
       <div>{submittedData.teamName}</div>
-    </>
+      <table className="border-zinc-200 border-2">
+        <thead>
+          <tr className="border-zinc-200 border-2">
+            <th className="border-zinc-200 border-2 w-4"></th>
+            <th className="border-zinc-200 border-2">name</th>
+            <th className="border-zinc-200 border-2">age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {submittedData.members.map((member, i) => {
+            return (
+              <tr>
+                <td className="border-zinc-200 border-2">{i + 1}</td>
+                <td className="border-zinc-200 border-2">{member.name}</td>
+                <td className="border-zinc-200 border-2">{member.age}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
   )
 }
