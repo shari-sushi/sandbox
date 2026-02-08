@@ -27,12 +27,37 @@ https://sanbox-sigma.vercel.app/
   - OtherPage
     - TSのnullable typeの挙動確認等 
 
-こっちのsandboxと合流したいなぁ
-https://github.com/shari-sushi/0015Laboratory/blob/main/README.md
-
----
 
 ### ローカルで動かす
 npm管理なのでpackage.jsonのあるディレクトリで`npm install`し、`npm run dev`で動かせるはず。
 実際に起動させてるviteなのでviteのデフォportを開いてね。
 `http://localhost:5173/`
+
+---
+
+## 備考
+
+### 別リポジトリもあり
+
+https://github.com/shari-sushi/0015Laboratory/blob/main/README.md
+
+> いろいろ試す遊び場。
+> - docker導入
+> - ポインタの挙動確認
+> - AESの暗号化/復号化
+> - youtube-player, react-youtube
+> - css
+> - Next.jsテストコード
+> - goでアルゴリズム
+>   - LinearSerch
+>   - BinarySerach
+>   - BubbleSort
+>   - SelectionSort
+>   - LisertionSort
+>   - ShellSort
+>   - QuickSort
+>   - MergeSort
+> - React-hooks
+>   - [useContext](https://github.com/shari-sushi/0015Laboratory/tree/main/test0015Next/my-app/src/component) 
+> - init関数の動作確認
+>   - test時にも動くか([別リポジトリ](https://github.com/shari-sushi/sanbox))
